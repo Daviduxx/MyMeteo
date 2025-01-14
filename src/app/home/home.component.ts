@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SvcService } from '../svc.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  datiDiTest: string[] = []
+  datiSvc: SvcService = inject(SvcService)
+  constructor () {
+    this.datiDiTest = this.datiSvc.getDatiTest()
+  }
 }
+
+
