@@ -1,11 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
+import { IMeteo } from './i-meteo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SvcService {
 
-  constructor () {}
+  METEO_API_TEST: string = environment.METEO_TEST;
+
+  constructor ( private http: HttpClient) { }
 
   public datiDiTest:string[] = ['cloudy', 'sunny', 'foggy', 'rainy']
 
@@ -16,6 +22,12 @@ export class SvcService {
   getDatiTestById(id:number): string {
     return this.datiDiTest[id]
   }
+
+  getMeteoTest(): Observable<IMeteo> {
+    return this.http.get<IMeteo>(this.METEO_API_TEST);
+  }
+
+
 }
 
 
