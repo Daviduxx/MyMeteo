@@ -1,9 +1,30 @@
 #main
-  border: 2px solid black
-  border-radius: 10px
   padding: 20px
-  margin: 40px 0
-  .hour
+  margin: 0 20px
+  background: rgba(255, 255, 255, 0.2)
+  border-radius: 16px
+  backdrop-filter: blur(10px)
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1)
+  // display: flex
+  // justify-content: center
+  //align-items: right
+  // background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%)
+
+  .weather-card
     display: flex
-    justify-content: space-between
-    border-bottom: 1px solid black
+    align-items: center
+    justify-content: space-around
+    gap: 16px
+    padding: 16px 24px
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3)
+
+    .temperature
+      font-size: 32px
+      font-weight: bold
+
+    img
+      width: 48px
+      height: 48px
+
+    p
+      font-size: 12px
