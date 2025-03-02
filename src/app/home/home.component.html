@@ -3,7 +3,7 @@
 <p>{{ meteoTest | json }}</p> -->
 
 <!-- From Uiverse.io by zanina-yassine -->
-<div class="card">
+<div class="card" *ngFor="let giorno of meteoDaily.daily.time; let i = index">
   <div class="container">
     <div class="cloud front">
       <span class="left-front"></span>
@@ -18,113 +18,16 @@
   </div>
 
   <div class="card-header">
-    <p>Messadine, Susah<br />Tunisia</p>
-    <p>March 13</p>
+    <p>Torino, Italia</p>
+    <p>{{ meteoDaily.daily.time[i] }}</p>
   </div>
 
-  <span class="temp">23°</span>
+  <span class="temp"
+    >{{ meteoDaily.daily.temperature_2m_min[i] }}°
+    {{ meteoDaily.daily.temperature_2m_max[i] }}°</span
+  >
 
   <div class="temp-scale">
-    <p>Sunny</p>
-  </div>
-</div>
-<div class="card">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
-    </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
-    </div>
-  </div>
-
-  <div class="card-header">
-    <p>Messadine, Susah<br />Tunisia</p>
-    <p>March 13</p>
-  </div>
-
-  <span class="temp">23°</span>
-
-  <div class="temp-scale">
-    <p>Sunny</p>
-  </div>
-</div>
-<div class="card">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
-    </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
-    </div>
-  </div>
-
-  <div class="card-header">
-    <p>Messadine, Susah<br />Tunisia</p>
-    <p>March 13</p>
-  </div>
-
-  <span class="temp">23°</span>
-
-  <div class="temp-scale">
-    <p>Sunny</p>
-  </div>
-</div>
-<div class="card">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
-    </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
-    </div>
-  </div>
-
-  <div class="card-header">
-    <p>Messadine, Susah<br />Tunisia</p>
-    <p>March 13</p>
-  </div>
-
-  <span class="temp">23°</span>
-
-  <div class="temp-scale">
-    <p>Sunny</p>
-  </div>
-</div>
-<div class="card">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
-    </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
-    </div>
-  </div>
-
-  <div class="card-header">
-    <p>Messadine, Susah<br />Tunisia</p>
-    <p>March 13</p>
-  </div>
-
-  <span class="temp">23°</span>
-
-  <div class="temp-scale">
-    <p>Sunny</p>
+    <p>{{ meteoDaily.daily.weather_code[i] }}</p>
   </div>
 </div>

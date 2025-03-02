@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SvcService } from '../svc.service';
-import { IMeteo } from '../i-meteo';
+import { IMeteoDaily } from '../i-meteoDaily';
 
 
 @Component({
@@ -10,16 +10,13 @@ import { IMeteo } from '../i-meteo';
 })
 export class HomeComponent implements OnInit{
 
-  datiDiTest: string[] = []
-  meteoTest!: IMeteo;
+  meteoDaily!: IMeteoDaily;
   datiSvc: SvcService = inject(SvcService)
-  constructor () {
-    this.datiDiTest = this.datiSvc.getDatiTest()
-  }
+  constructor () { }
 
   ngOnInit(): void {
-    this.datiSvc.getMeteoTest().subscribe(
-      dati => this.meteoTest = dati
+    this.datiSvc.getMeteoDaily().subscribe(
+      dati => this.meteoDaily = dati
     )
   }
 }
