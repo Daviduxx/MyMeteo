@@ -19,7 +19,7 @@
 
   <div class="card-header">
     <p>Torino, Italia</p>
-    <p>{{ meteoDaily.daily.time[i] }}</p>
+    <p>{{ meteoDaily.daily.time[i] | date : "MMM d" }}</p>
   </div>
 
   <span class="temp"
