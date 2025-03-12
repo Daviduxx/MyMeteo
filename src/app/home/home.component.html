@@ -2,33 +2,45 @@
 
 <p>{{ meteoTest | json }}</p> -->
 
-<div [ngClass]="meteoNow.current.is_day === 0 ? 'isNight' : 'isDay'">
-  <div class="card" *ngFor="let giorno of meteoDaily.daily.time; let i = index">
-    <div class="container">
-      <div class="cloud front">
-        <span class="left-front"></span>
-        <span class="right-front"></span>
-      </div>
-      <span class="sun sunshine"></span>
-      <span class="sun"></span>
-      <div class="cloud back">
-        <span class="left-back"></span>
-        <span class="right-back"></span>
-      </div>
+<!-- <div class="card">
+  <div class="container">
+    <div class="cloud front">
+      <span class="left-front"></span>
+      <span class="right-front"></span>
     </div>
+    <span class="sun sunshine"></span>
+    <span class="sun"></span>
+    <div class="cloud back">
+      <span class="left-back"></span>
+      <span class="right-back"></span>
+    </div>
+  </div>
 
-    <div class="card-header">
+  <div class="card-header">
+    <p>Torino, Italia</p>
+    <p></p>
+  </div>
+
+  <span class="temp">45° 45°</span>
+
+  <div class="temp-scale">
+    <p>80</p>
+  </div>
+</div> -->
+
+<div id="main">
+  <div class="location">
+    <div>
       <p>Torino, Italia</p>
-      <p>{{ meteoDaily.daily.time[i] | date : "MMM d" }}</p>
     </div>
-
-    <span class="temp"
-      >{{ meteoDaily.daily.temperature_2m_min[i] }}°
-      {{ meteoDaily.daily.temperature_2m_max[i] }}°</span
-    >
-
-    <div class="temp-scale">
-      <p>{{ meteoDaily.daily.weather_code[i] }}</p>
+    <div class="weatherIcon">
+      <img src="../../assets/sunny.png" alt="" class="image" />
+    </div>
+  </div>
+  <div class="temperature">
+    <div><p class="grades">45° 45°</p></div>
+    <div class="description">
+      <p>Sunny</p>
     </div>
   </div>
 </div>

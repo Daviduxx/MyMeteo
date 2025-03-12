@@ -5,8 +5,8 @@ import { MeteoNow } from './i-meteoNow';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./app.component.sass']
+//  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit{
   title = 'MyMeteo';
