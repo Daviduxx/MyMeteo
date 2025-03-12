@@ -2,32 +2,33 @@
 
 <p>{{ meteoTest | json }}</p> -->
 
-<!-- From Uiverse.io by zanina-yassine -->
-<div class="card" *ngFor="let giorno of meteoDaily.daily.time; let i = index">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
+<div [ngClass]="meteoNow.current.is_day === 0 ? 'isNight' : 'isDay'">
+  <div class="card" *ngFor="let giorno of meteoDaily.daily.time; let i = index">
+    <div class="container">
+      <div class="cloud front">
+        <span class="left-front"></span>
+        <span class="right-front"></span>
+      </div>
+      <span class="sun sunshine"></span>
+      <span class="sun"></span>
+      <div class="cloud back">
+        <span class="left-back"></span>
+        <span class="right-back"></span>
+      </div>
     </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
+
+    <div class="card-header">
+      <p>Torino, Italia</p>
+      <p>{{ meteoDaily.daily.time[i] | date : "MMM d" }}</p>
     </div>
-  </div>
 
-  <div class="card-header">
-    <p>Torino, Italia</p>
-    <p>{{ meteoDaily.daily.time[i] | date : "MMM d" }}</p>
-  </div>
+    <span class="temp"
+      >{{ meteoDaily.daily.temperature_2m_min[i] }}°
+      {{ meteoDaily.daily.temperature_2m_max[i] }}°</span
+    >
 
-  <span class="temp"
-    >{{ meteoDaily.daily.temperature_2m_min[i] }}°
-    {{ meteoDaily.daily.temperature_2m_max[i] }}°</span
-  >
-
-  <div class="temp-scale">
-    <p>{{ meteoDaily.daily.weather_code[i] }}</p>
+    <div class="temp-scale">
+      <p>{{ meteoDaily.daily.weather_code[i] }}</p>
+    </div>
   </div>
 </div>
