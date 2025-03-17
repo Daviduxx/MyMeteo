@@ -28,19 +28,53 @@
   </div>
 </div> -->
 
-<div id="main">
+<div id="main" *ngFor="let day of meteoDaily.daily.time; let i = index">
   <div class="location">
     <div>
       <p>Torino, Italia</p>
+      <p>{{ day | date : "MMM d" }}</p>
     </div>
     <div class="weatherIcon">
       <img src="../../assets/sunny.png" alt="" class="image" />
     </div>
   </div>
   <div class="temperature">
-    <div><p class="grades">45° 45°</p></div>
-    <div class="description">
-      <p>Sunny</p>
+    <div>
+      <p class="grades">
+        {{ meteoDaily.daily.temperature_2m_min[i] }}°
+        {{ meteoDaily.daily.temperature_2m_max[i] }}°
+      </p>
+    </div>
+    <div class="description" [ngSwitch]="meteoDaily.daily.weather_code[i]">
+      <p *ngSwitchCase="0">Clear</p>
+      <p *ngSwitchCase="1">Sunny</p>
+      <p *ngSwitchCase="2">Partly Cloudy</p>
+      <p *ngSwitchCase="3">Cloudy</p>
+      <p *ngSwitchCase="45">Fog</p>
+      <p *ngSwitchCase="48">Freezing Fog</p>
+      <p *ngSwitchCase="51">Drizzle</p>
+      <p *ngSwitchCase="53">Drizzle</p>
+      <p *ngSwitchCase="55">Drizzle</p>
+      <p *ngSwitchCase="56">Freezing Drizzle</p>
+      <p *ngSwitchCase="57">Freezing Drizzle</p>
+      <p *ngSwitchCase="61">Rain</p>
+      <p *ngSwitchCase="63">Rain</p>
+      <p *ngSwitchCase="65">Rain</p>
+      <p *ngSwitchCase="66">Freezing Rain</p>
+      <p *ngSwitchCase="67">Freezing Rain</p>
+      <p *ngSwitchCase="71">Snow</p>
+      <p *ngSwitchCase="73">Snow</p>
+      <p *ngSwitchCase="75">Snow</p>
+      <p *ngSwitchCase="77">Snow Grains</p>
+      <p *ngSwitchCase="80">Showers</p>
+      <p *ngSwitchCase="81">Showers</p>
+      <p *ngSwitchCase="82">Heavy Showers</p>
+      <p *ngSwitchCase="85">Snow Showers</p>
+      <p *ngSwitchCase="86">Snow Showers</p>
+      <p *ngSwitchCase="95">Thunderstorm</p>
+      <p *ngSwitchCase="96">Thunderstorm</p>
+      <p *ngSwitchCase="99">Thunderstorm</p>
+      <p *ngSwitchDefault>NA</p>
     </div>
   </div>
 </div>
