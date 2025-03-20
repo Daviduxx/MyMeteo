@@ -1,6 +1,8 @@
 <!-- <app-home></app-home> -->
-<div [ngClass]="meteoNow.current.is_day === 0 ? 'isNight' : 'isDay'">
-  <app-search></app-search>
+<div *ngIf="meteoNow">
+  <div [ngClass]="meteoNow.current.is_day === 0 ? 'isNight' : 'isDay'">
+    <app-search></app-search>
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -13,15 +13,29 @@ export class HomeComponent implements OnInit{
 
   meteoDaily!: IMeteoDaily;
   meteoNow!: MeteoNow;
+  latitude:number = 0
+  longitude:number = 0
   datiSvc: SvcService = inject(SvcService)
+
   constructor () { }
 
   ngOnInit(): void {
-    this.datiSvc.getMeteoDaily().subscribe(
-      dati => this.meteoDaily = dati
-    )
-    this.datiSvc.getMeteoNow().subscribe(
-      dati => this.meteoNow = dati
+
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition( position => {
+       this.latitude = position.coords.latitude;
+       this.longitude = position.coords.longitude;
+
+       this.getMeteo()
+    })
+
+
+  }
+
+  }
+  getMeteo():void{
+    this.datiSvc.getMeteoDaily(this.latitude, this.longitude).subscribe(
+      dati => this.meteoDaily= dati
     )
   }
 }

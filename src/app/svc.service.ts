@@ -1,5 +1,5 @@
 import { IMeteoDaily } from './i-meteoDaily';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
@@ -15,12 +15,18 @@ export class SvcService {
 
   constructor ( private http: HttpClient) { }
 
-  getMeteoDaily():Observable<IMeteoDaily>{
-    return this.http.get<IMeteoDaily>(this.METEO_DAILY)
+  getMeteoDaily(latitude:number, longitude:number):Observable<IMeteoDaily>{
+    let params = new HttpParams()
+    .set('latitude', latitude)
+    .set('longitude', longitude)
+    return this.http.get<IMeteoDaily>(this.METEO_DAILY, { params })
   }
 
-  getMeteoNow():Observable<MeteoNow>{
-    return this.http.get<MeteoNow>(this.METEO_NOW)
+  getMeteoNow(latitude:number, longitude:number):Observable<MeteoNow>{
+    let params = new HttpParams()
+    .set('latitude', latitude)
+    .set('longitude', longitude)
+    return this.http.get<MeteoNow>(this.METEO_NOW, { params })
   }
 
 

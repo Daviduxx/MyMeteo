@@ -1,248 +1,225 @@
-<!-- <h1>{{ datiDiTest }}</h1>
-
-<p>{{ meteoTest | json }}</p> -->
-
-<!-- <div class="card">
-  <div class="container">
-    <div class="cloud front">
-      <span class="left-front"></span>
-      <span class="right-front"></span>
+<div *ngIf="meteoDaily">
+  <div id="main" *ngFor="let day of meteoDaily.daily.time; let i = index">
+    <div class="location">
+      <div>
+        <p>Torino, Italia</p>
+        <p>{{ day | date : "MMM d" }}</p>
+      </div>
+      <div class="weatherIcon" [ngSwitch]="meteoDaily.daily.weather_code[i]">
+        <img
+          *ngSwitchCase="0"
+          src="../../assets/sunny.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="1"
+          src="../../assets/sunny.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="2"
+          src="../../assets/cloudsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="3"
+          src="../../assets/cloud.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="45"
+          src="../../assets/windsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="48"
+          src="../../assets/windsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="51"
+          src="../../assets/rainsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="53"
+          src="../../assets/rainsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="55"
+          src="../../assets/rainsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="56"
+          src="../../assets/rainsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="57"
+          src="../../assets/rainsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="61"
+          src="../../assets/rain.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="63"
+          src="../../assets/rain.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="65"
+          src="../../assets/rain.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="66"
+          src="../../assets/rain.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="67"
+          src="../../assets/rain.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="71"
+          src="../../assets/snow.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="73"
+          src="../../assets/snow.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="75"
+          src="../../assets/snow.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="77"
+          src="../../assets/snow.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="80"
+          src="../../assets/stormsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="81"
+          src="../../assets/stormsun.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="82"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="85"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="86"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="95"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="96"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchCase="99"
+          src="../../assets/storm.png"
+          alt=""
+          class="image"
+        />
+        <img
+          *ngSwitchDefault
+          src="../../assets/sunny.png"
+          alt=""
+          class="image"
+        />
+      </div>
     </div>
-    <span class="sun sunshine"></span>
-    <span class="sun"></span>
-    <div class="cloud back">
-      <span class="left-back"></span>
-      <span class="right-back"></span>
-    </div>
-  </div>
-
-  <div class="card-header">
-    <p>Torino, Italia</p>
-    <p></p>
-  </div>
-
-  <span class="temp">45° 45°</span>
-
-  <div class="temp-scale">
-    <p>80</p>
-  </div>
-</div> -->
-
-<div id="main" *ngFor="let day of meteoDaily.daily.time; let i = index">
-  <div class="location">
-    <div>
-      <p>Torino, Italia</p>
-      <p>{{ day | date : "MMM d" }}</p>
-    </div>
-    <div class="weatherIcon" [ngSwitch]="meteoDaily.daily.weather_code[i]">
-      <img
-        *ngSwitchCase="0"
-        src="../../assets/sunny.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="1"
-        src="../../assets/sunny.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="2"
-        src="../../assets/cloudsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="3"
-        src="../../assets/cloud.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="45"
-        src="../../assets/windsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="48"
-        src="../../assets/windsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="51"
-        src="../../assets/rainsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="53"
-        src="../../assets/rainsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="55"
-        src="../../assets/rainsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="56"
-        src="../../assets/rainsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="57"
-        src="../../assets/rainsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="61"
-        src="../../assets/rain.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="63"
-        src="../../assets/rain.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="65"
-        src="../../assets/rain.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="66"
-        src="../../assets/rain.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="67"
-        src="../../assets/rain.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="71"
-        src="../../assets/snow.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="73"
-        src="../../assets/snow.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="75"
-        src="../../assets/snow.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="77"
-        src="../../assets/snow.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="80"
-        src="../../assets/stormsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="81"
-        src="../../assets/stormsun.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="82"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="85"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="86"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="95"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="96"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img
-        *ngSwitchCase="99"
-        src="../../assets/storm.png"
-        alt=""
-        class="image"
-      />
-      <img *ngSwitchDefault src="../../assets/sunny.png" alt="" class="image" />
-    </div>
-  </div>
-  <div class="temperature">
-    <div>
-      <p class="grades">
-        {{ meteoDaily.daily.temperature_2m_min[i] }}°
-        {{ meteoDaily.daily.temperature_2m_max[i] }}°
-      </p>
-    </div>
-    <div class="description" [ngSwitch]="meteoDaily.daily.weather_code[i]">
-      <p *ngSwitchCase="0">Clear</p>
-      <p *ngSwitchCase="1">Sunny</p>
-      <p *ngSwitchCase="2">Partly Cloudy</p>
-      <p *ngSwitchCase="3">Cloudy</p>
-      <p *ngSwitchCase="45">Fog</p>
-      <p *ngSwitchCase="48">Freezing Fog</p>
-      <p *ngSwitchCase="51">Drizzle</p>
-      <p *ngSwitchCase="53">Drizzle</p>
-      <p *ngSwitchCase="55">Drizzle</p>
-      <p *ngSwitchCase="56">Freezing Drizzle</p>
-      <p *ngSwitchCase="57">Freezing Drizzle</p>
-      <p *ngSwitchCase="61">Rain</p>
-      <p *ngSwitchCase="63">Rain</p>
-      <p *ngSwitchCase="65">Rain</p>
-      <p *ngSwitchCase="66">Freezing Rain</p>
-      <p *ngSwitchCase="67">Freezing Rain</p>
-      <p *ngSwitchCase="71">Snow</p>
-      <p *ngSwitchCase="73">Snow</p>
-      <p *ngSwitchCase="75">Snow</p>
-      <p *ngSwitchCase="77">Snow Grains</p>
-      <p *ngSwitchCase="80">Showers</p>
-      <p *ngSwitchCase="81">Showers</p>
-      <p *ngSwitchCase="82">Heavy Showers</p>
-      <p *ngSwitchCase="85">Snow Showers</p>
-      <p *ngSwitchCase="86">Snow Showers</p>
-      <p *ngSwitchCase="95">Thunderstorm</p>
-      <p *ngSwitchCase="96">Thunderstorm</p>
-      <p *ngSwitchCase="99">Thunderstorm</p>
-      <p *ngSwitchDefault>NA</p>
+    <div class="temperature">
+      <div>
+        <p class="grades">
+          {{ meteoDaily.daily.temperature_2m_min[i] }}°
+          {{ meteoDaily.daily.temperature_2m_max[i] }}°
+        </p>
+      </div>
+      <div class="description" [ngSwitch]="meteoDaily.daily.weather_code[i]">
+        <p *ngSwitchCase="0">Clear</p>
+        <p *ngSwitchCase="1">Sunny</p>
+        <p *ngSwitchCase="2">Partly Cloudy</p>
+        <p *ngSwitchCase="3">Cloudy</p>
+        <p *ngSwitchCase="45">Fog</p>
+        <p *ngSwitchCase="48">Freezing Fog</p>
+        <p *ngSwitchCase="51">Drizzle</p>
+        <p *ngSwitchCase="53">Drizzle</p>
+        <p *ngSwitchCase="55">Drizzle</p>
+        <p *ngSwitchCase="56">Freezing Drizzle</p>
+        <p *ngSwitchCase="57">Freezing Drizzle</p>
+        <p *ngSwitchCase="61">Rain</p>
+        <p *ngSwitchCase="63">Rain</p>
+        <p *ngSwitchCase="65">Rain</p>
+        <p *ngSwitchCase="66">Freezing Rain</p>
+        <p *ngSwitchCase="67">Freezing Rain</p>
+        <p *ngSwitchCase="71">Snow</p>
+        <p *ngSwitchCase="73">Snow</p>
+        <p *ngSwitchCase="75">Snow</p>
+        <p *ngSwitchCase="77">Snow Grains</p>
+        <p *ngSwitchCase="80">Showers</p>
+        <p *ngSwitchCase="81">Showers</p>
+        <p *ngSwitchCase="82">Heavy Showers</p>
+        <p *ngSwitchCase="85">Snow Showers</p>
+        <p *ngSwitchCase="86">Snow Showers</p>
+        <p *ngSwitchCase="95">Thunderstorm</p>
+        <p *ngSwitchCase="96">Thunderstorm</p>
+        <p *ngSwitchCase="99">Thunderstorm</p>
+        <p *ngSwitchDefault>NA</p>
+      </div>
     </div>
   </div>
 </div>
