@@ -12,7 +12,7 @@ import { MeteoNow } from '../i-meteoNow';
 export class HomeComponent implements OnInit{
 
   meteoDaily!: IMeteoDaily;
-  meteoNow!: MeteoNow;
+//  meteoNow!: MeteoNow;
   latitude:number = 0
   longitude:number = 0
   datiSvc: SvcService = inject(SvcService)

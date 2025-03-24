@@ -33,13 +33,13 @@ export class SvcService {
     return this.http.get<MeteoNow>(this.METEO_NOW, { params })
   }
 
-  getGeocode(city: string):Observable<Igeocode>{
+  getGeocode(city: string):Observable<Igeocode[]>{
     let params = new HttpParams()
     .set('city', city)
     let headers = new HttpHeaders()
     .set('X-Api-Key', this.API_KEY)
 
-    return this.http.get<Igeocode>(this.GEOCODE, { headers, params })
+    return this.http.get<Igeocode[]>(this.GEOCODE, { headers, params })
   }
 
 
