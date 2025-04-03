@@ -42,6 +42,22 @@ export class SvcService {
     return this.http.get<Igeocode[]>(this.GEOCODE, { headers, params })
   }
 
+  getCoords(): Observable<{ latitude:number; longitude:number}>{
+    return new Observable(observer => {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          p => {
+            observer.next({
+              latitude: p.coords.latitude,
+              longitude: p.coords.longitude
+            });
+            observer.complete()
+          }
+        )
+      }
+    })
+  }
+
 
 }
 

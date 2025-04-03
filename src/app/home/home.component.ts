@@ -9,37 +9,37 @@ import { MeteoNow } from '../i-meteoNow';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
-export class HomeComponent implements OnInit, OnChanges{
+export class HomeComponent implements OnChanges{
 
   meteoDaily!: IMeteoDaily;
   meteoNow!: MeteoNow;
-  @Input() latitude!: number;
-  @Input() longitude!:number;
+  latitude: number = 0
+  longitude:number = 0
   datiSvc: SvcService = inject(SvcService)
 
   constructor () { }
 
   ngOnInit(): void {
 
+      this.datiSvc.getCoords().subscribe(c => {
+          this.latitude = c.latitude
+          this.longitude = c.longitude
+          this.datiSvc.getMeteoDaily(this.latitude, this.longitude).subscribe(dati => {
+            this.meteoDaily = dati
+          })
+        })
 
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition( position => {
-       this.latitude = position.coords.latitude;
-       this.longitude = position.coords.longitude;
-
-       this.getMeteo()
-    })
-
-
-  }
 
   }
 
   ngOnChanges(changes: SimpleChanges){
     if (changes['latitude'] || changes['longitude']){
+      this.latitude = changes['latitude'].currentValue
       console.log("CAMBIATE!");
-
       this.getMeteo()
+    }
+    else{
+      console.log("NON CAMBIO NIENTE");
 
     }
   }

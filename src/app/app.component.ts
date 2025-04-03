@@ -25,33 +25,22 @@ export class AppComponent implements OnInit{
           city: new FormControl('Turin', [Validators.required, Validators.minLength(2), Validators.maxLength(20)])
         })
 
+        this.svc.getCoords().subscribe(c => {
+          this.latitude = c.latitude
+          this.longitude = c.longitude
+          this.svc.getMeteoNow(this.latitude, this.longitude).subscribe(dati => {
+            this.meteoNow = dati
+          })
+        })
 
-        if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(
-        p => {
-        this.latitude = p.coords.latitude
-        this.longitude = p.coords.longitude
-        console.log(this.latitude);
-        console.log(this.longitude);
-
-          this.svc.getMeteoNow(this.latitude, this.longitude).subscribe(
-      dati => {
-        this.meteoNow = dati
-        console.log(dati);
-
-      }
-    )
-      })
-    }
       }
 
       onSubmit(){
-   //     console.log(this.findCity);
          this.svc.getGeocode(this.findCity.value.city).subscribe(coords => {
           console.log(coords);
            this.latitude = coords[0].latitude
-          this.longitude = coords[0].longitude
-          this.svc.getMeteoNow(this.latitude, this.longitude).subscribe(
+           this.longitude = coords[0].longitude
+           this.svc.getMeteoNow(this.latitude, this.longitude).subscribe(
       dati => {
         this.meteoNow = dati
         console.log(dati);
